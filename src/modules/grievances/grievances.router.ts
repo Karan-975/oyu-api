@@ -1,0 +1,15 @@
+import { Router } from 'express';
+import { grievancesController } from './grievances.controller';
+import { authenticate } from '../../middleware/auth.middleware';
+import { requirePermission, Permissions, scopeOrganization } from '../../middleware/rbac.middleware';
+import { auditLog } from '../../middleware/audit.middleware';
+const router = Router();
+router.use(authenticate);
+const c = grievancesController;
+router.get('/',                 requirePermission(Permissions.GRIEVANCE_VIEW),   scopeOrganization(), c.list.bind(c));
+router.post('/',                requirePermission(Permissions.GRIEVANCE_CREATE), auditLog('submit', 'grievance'), c.create.bind(c));
+router.get('/:id',              requirePermission(Permissions.GRIEVANCE_VIEW),   c.getById.bind(c));
+router.patch('/:id/assign',     requirePermission(Permissions.GRIEVANCE_ASSIGN), auditLog('assign', 'grievance'), c.assign.bind(c));
+router.patch('/:id/status',     requirePermission(Permissions.GRIEVANCE_CLOSE),  auditLog('status_change', 'grievance'), c.updateStatus.bind(c));
+router.post('/:id/comments',    requirePermission(Permissions.GRIEVANCE_VIEW),   c.addComment.bind(c));
+export default router;

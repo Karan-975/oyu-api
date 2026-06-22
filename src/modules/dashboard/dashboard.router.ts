@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { dashboardController } from './dashboard.controller';
+import { authenticate } from '../../middleware/auth.middleware';
+const router = Router();
+router.use(authenticate);
+const c = dashboardController;
+router.get('/summary',    c.getSummary.bind(c));
+router.get('/charts',     c.getCharts.bind(c));
+router.get('/activities', c.getActivities.bind(c));
+export default router;

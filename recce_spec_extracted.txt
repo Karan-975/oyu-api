@@ -1,0 +1,989 @@
+cating possible
+cylinder, valve, seal, or rod
+issue?
+Single
+Choice
+Normal strokes /
+Excessive strokes /
+No water
+0
+5 Is there any visible leakage
+around the pump head,
+spout, platform, or rising
+main area?
+Single
+Choice
+Yes / No 0
+6 Based on handle movement
+and water flow, does the
+issue appear repairable
+through replacement of rods,
+seals, valves, cylinder parts,
+or does the full pump need
+replacement?
+Single
+Choice
+Minor repair / Major
+repair / Full
+replacement /
+Further
+inspection required
+0
+11.7.4 Water Access & Usage Form
+This section captures community water usage patterns and access conditions related to
+the borehole.
+a) Possible Input Fields
+Sr. No Question Type Options Scores
+19 Is the Borehole main
+drinking water source
+in area?
+Yes/No Yes / No 2/0
+20 Households served
+from the Borehole
+Single
+Choice
+<50 / 50–100 / 100–
+150 / 150–200 /
+200–500 / >500
+0/1/2/3/4/5
+21 Nearby alternative
+water sources
+Multi
+Select
+River / Stream /
+Canal / Pond / Lake
+3/2/3/2/3/2/3/2/2/0/0/0/1
+
+-- 41 of 121 --
+
+Page 42 of 121
+/ Open Well /
+Hand-dug Well /
+Spring / Reservoir /
+Rainwater / Tanker
+/ Community Point
+/ Piped Water /
+Other
+22 Is water from
+Borehole clear (no
+visible particles)?
+Yes/No Yes/No 0
+Is there any yellow,
+brown, green, or
+cloudy colour in the
+water?
+Yes/No Yes/No 0
+23 Any smell or unusual
+taste from Borehole
+Water ?
+Yes/No Yes/No 0
+Are there visible
+particles, mud, sand,
+or floating materials
+in the water?
+Yes/No Yes/No 0
+24 Water Quality Testing
+Done Before?
+Yes/No Yes/No 0
+25 Any known Water
+quality issues in
+Borehole Water
+(fluoride, salinity etc.)
+Yes/No Yes/No/Unknown 0
+If Yes pls Specify Text -- 0
+26 Is there any Risk of
+contamination
+nearby
+Borehole(toilets,
+waste, stagnant
+water, animal waste,
+open drainage, etc.)
+Yes/no Yes/No 0
+27 Do people in the area
+boil water for drinking
+purposes?
+Yes/No Yes/No 2/1
+
+-- 42 of 121 --
+
+Page 43 of 121
+11.7.5 Additional Observations Form
+This section allows NGO users to capture additional field observations, media evidence,
+comments, and supporting information during recce activities.
+a) Possible Input Fields
+Sr. No Question Type Options Score
+27 Any nearby borehole
+within 1 km?
+Yes/No Yes / No / Unknown 0
+28 Is the borehole suitable
+for rehabilitation?
+Single
+Choice
+Yes / No/Needs technical
+inspection
+0
+29 Overall site feasibility
+(Need of repair) Priority
+Single
+Choice
+High / Medium / Low 0
+30 Repair required Single
+choice
+Minor repair / Major repair / Full
+pump replacement / New Drill
+0
+31 Surveyor Remarks Text Open comments -
+11.7.6 Review & Submit Screen
+The Review & Submit Screen allows users to review all entered Recce data before final
+submission.
+Features:
+• Section-wise data preview
+• Edit section option
+• Final score visibility
+• Submit button
+• Save Draft button
+• Each section should already be saved as draft.
+11.7.7 Submission Flow
+• User reviews entered data.
+• System validates mandatory fields.
+• Borehole score is calculated.
+• Submission is stored locally/offline if internet is unavailable.
+• Successful submissions update borehole lifecycle progress.
+11.7.8 Things to Remember
+• Recce is the first mandatory operational module in the borehole lifecycle.
+• The module should support complete offline operations.
+• Dynamic fields and scoring should remain configurable from Admin Panel.
+• GPS accuracy and duplicate borehole validation are critical requirements.
+
+-- 43 of 121 --
+
+Page 44 of 121
+• UI should remain simple for fast field data collection.
+11.8 Baseline Survey Module
+The Baseline Survey Module is used to collect household and community-level information
+related to water usage, health conditions, fuel consumption, sanitation practices, and
+dependency on the identified borehole. This module is opened from the Borehole Detail
+Screen after the Borehole Recce process is initiated or completed.
+The module helps establish baseline community conditions before rehabilitation activities
+and supports future impact comparison during monitoring stages.
+11.8.1 Module Overview Screen
+The Module Overview Screen displays the available survey sections and their completion
+progress for the selected borehole.
+Sections displayed:
+• Household Baseline Survey
+• Community Representative Survey
+Features:
+• Section-wise completion status
+• Draft/Submitted indicators
+• Resume section option
+• Progress visibility
+11.8.2 Household Baseline Survey
+This section captures household-level survey data from people using or depending on
+the borehole water source. The exact survey fields, options, field types, and scoring logic
+will be managed dynamically from the Admin Panel as per configured forms.
+a) Basic Details:
+Input Fields:
+Sr. No Question Type Options Score
+32 Date of
+Survey
+Date - 0
+33 Respondent
+Name
+Text - 0
+34 Gender Single
+Choice
+Male / Female 0
+
+-- 44 of 121 --
+
+Page 45 of 121
+35 Contact
+Number
+Numeric - 0
+36 Survey
+Method
+Single
+Choice
+Face-to-Face / Remote
+/ Telephonic
+0
+37 Type of
+Community
+Single
+Choice
+Rural / Urban / Semi-
+Urban
+2/0/1
+38 No of
+Household
+Members
+Numeric - 0
+b) Water Source
+Input Fields:
+Sr. No Question Type Options Score
+39 What is the nearby
+Primary drinking
+water source for
+household?
+Multi
+Select
+River / Rainwater /
+Spring
+(Protected/Unprotected)
+/ Surface Water /
+Lake/Pond / Borehole /
+Tap Water / Well / Other
+2/2/
+(0/1)/2/2/2/1/0/1/0
+40 Since how many
+months the borehole
+is non- functional?
+Numeric Months 0
+c) Water Usage
+Input Fields
+Sr. No Question Type Options Score
+41 Time taken to fetch
+water (hrs/day)
+Numeric - > 30 mins- 2
+< 30 mins – 1
+> 1 hour - 3
+42 What is the Distance
+to water source in
+Numeric - > 2 km – 2
+< 2 km – 1
+3 to 5 km – 3
+
+-- 45 of 121 --
+
+Page 46 of 121
+(kms)? > 5 km - 4
+43 Who fetches water
+mostly in family ?
+Multi
+Select
+Male /
+Female /
+Children
+0/2/1
+44 What is the Frequency
+of fetching water?
+Numeric Times/day >1 -1
+>3 – 2
+>5- 3
+45 Water consumption
+(litres/day)
+Numeric - >10 – 1
+>15 – 2
+> 20 –3
+> 30 -4
+d) Boiling Water Behaviour
+Input Fields
+Sr. No Question Type Options Score
+46 Do you boil water for
+drinking?
+Yes/No Yes / No 1/0
+47 Mention type of
+Stove/Device used for
+boiling water.
+Single
+Choice
+Three-stone /
+Improved Cookstove /
+Electric / Other
+2/1/0/0
+48 Time spent in boiling water
+(mins/day)
+Numeric - 0
+49 Water boiled (litres/day) Numeric - 0
+50 Fuel type used in stove? Single
+Choice
+Wood / Charcoal /
+Pellets /Briquettes/ LPG
+/ Electricity / Other
+3/2/2/2/0/0/0
+51 What is the Fuel
+quantity/day?
+Numeric Kg >10-1
+>15-1
+>20- 2
+>25 – 3
+
+-- 46 of 121 --
+
+Page 47 of 121
+52 What is the Daily fuel cost? Numeric Currency 0
+e) Health Impact
+Input Fields
+Sr. No Question Type Options Score
+53 Any Illness due to water in family? Yes/No Yes / No 1/0
+54 Who mostly gets affected? Multi
+Select
+Male / Female /
+Children
+0
+55 Common illnesses? Multi
+Select
+Diarrhoea /
+Stomach Infection
+/ Skin Infection /
+Vomiting / Fever
+2/2/0/1/
+0
+56 Issues faced due to boiling Multi
+Select
+Smoke / Breathing
+/ Eye irritation /
+Other
+0
+57 Any Extra medical expenses due to
+illness?
+Yes/No Yes / No 1/0
+58 Upload stove image Image
+Upload
+- 1
+59 Upload photo of Beneficiary Take
+photograp
+h of
+beneficiar
+y & upload
+Upload Image 0
+60 “I hereby provide my consent for the
+collection and use of all information
+related to the borehole survey. I
+confirm that the details provided by
+me, including my personal
+information and community-related
+information, are true, accurate, and
+correct to the best of my
+knowledge.”
+Text with
+Tick Box
+Name of
+Beneficiary
+Signature of
+Beneficiary
+0
+
+-- 47 of 121 --
+
+Page 48 of 121
+11.8.3 Community Representative Survey
+This section captures responses and feedback from community representatives or local
+stakeholders regarding borehole usage, challenges, accessibility, and community-level
+concerns. The complete survey structure and fields will be dynamically configurable from
+the Admin Panel.
+Input Fields:
+Sr. No Question Type Options Score
+59 Name Text - 0
+60 Role Single
+Choice
+Representative /
+Leader /
+Caretaker
+0
+61 Is the Borehole functional? Single
+Choice
+Yes / No /
+Partially
+0/2/1
+62 Reason for breakdown of
+Borehole
+Text - 0
+63 Is the borehole used for drinking? Yes/No Yes / No 1/0
+64 Total number of Households
+using borehole? Household
+dependency?
+Numeric - <50 - 0
+50– 100 - 1
+100–150 – 2
+150–200 – 3
+200–500 - 4
+65 Who is mainly responsible for
+Water collection?
+Single
+Choice
+Women /
+Children / All
+2/1/1
+66 Any alternative water source
+nearby?
+Text - 0
+67 Do people boil water before
+consuming/ Water boiling
+practice?
+Yes/No Yes / No 1/0
+68 Commonly used Fuel for boiling
+water?
+Single
+Choice
+Firewood /
+Charcoal / Other
+2/1/0
+69 Is the Illness from unsafe Water
+consumption is common in the
+Yes/No Yes / No 1/0
+
+-- 48 of 121 --
+
+Page 49 of 121
+area?
+70 Total time to collect water daily?
+(mins)
+Numeric - > 30 mins- 2
+< 30 mins – 1
+> 1 hour - 3
+71 Any Water committee exists for
+maintenance of borehole?
+Yes/No Yes / No 0/1
+72 Any Maintenance fee collected? Yes/No Yes / No 0/1
+73 Do you Agree for rehabilitation of
+Borehole?
+Yes/No Yes / No 0
+74 Can you give Consent for carbon
+project?
+Yes/No Yes / No 1/0
+75 Agreement Page
+“I, {Name}, as {Community
+Representative / Traditional
+Authority / Authorized
+Representative}, hereby confirm
+that I am the rightful and
+authorized owner of the borehole
+bearing ID {Borehole ID}, located
+at {Complete Address}, with
+geographic coordinates
+{Latitude}, {Longitude}.”
+Text to fill
+in between
+with name
+& other
+details
+highlighted
+in red
+Signature to be
+taken after that
+11.8.4 Things to Remember
+• Baseline surveys are linked directly with the selected borehole ID.
+• The module should remain lightweight and field-friendly for long survey operations.
+• Dynamic forms should reduce dependency on mobile app updates.
+• Offline operation is a critical requirement for remote field usage.
+• Section-wise progress visibility should remain clear throughout the module.
+11.9 LSC / Stakeholder Consultation Module
+The LSC (Local Stakeholder Consultation) Module is used to record stakeholder
+discussions, community consultation meetings, rehabilitation planning inputs, and
+decisions related to the selected borehole. This module is opened from the Borehole Detail
+Screen and is generally completed after the Baseline Survey stage.
+
+-- 49 of 121 --
+
+Page 50 of 121
+The module helps maintain official consultation records, community participation details,
+meeting outcomes, and rehabilitation-related recommendations before contractor
+activities begin.
+11.9.1 Module Overview Screen
+The Module Overview Screen displays the available consultation sections and their
+completion progress for the selected borehole.
+Sections displayed:
+• Basic Details
+• Feedback from Community
+Features:
+• Section-wise completion tracking
+• Draft/Submitted indicators
+• Resume/Edit section option
+• Submission status visibility
+11.9.2 Basic Details Section
+This section captures the primary details related to the stakeholder consultation meeting
+conducted for the borehole. The exact fields, options, validations, and scoring logic will
+remain dynamically manageable from the Admin Panel.
+Input Fields:
+Sr. No Question Type Options Score
+75 Date of meeting Date - 0
+76 Venue/Location Text - 0
+77 Organizer details Text - 0
+63 Purpose explained in the
+meeting?
+Yes/No Yes / No 0
+64 Total attendees in Meeting? Numeric - 0
+65 Attendance sheet Filled &
+signed properly?
+Yes/No Yes / No 0
+66 Pls upload Photos of
+attendance sheet & the
+attendees. 5, 6 photos
+Upload photos Upload photos 0
+
+-- 50 of 121 --
+
+Page 51 of 121
+Put Minutes of Meeting of
+LSC.
+Text Text 0
+67 Upload photos of FPIC forms Upload Photos Upload photos 0
+11.9.3 Feedback from Community Section
+This section captures community observations, stakeholder concerns, rehabilitation
+expectations, risks, and recommendations discussed during the consultation meeting.
+The exact form fields and options will be dynamically configurable from the Admin Panel.
+Input Fields:
+Sr. No Question Type Options Score
+68 Did the Project explained clearly? Yes/No Yes / No 0
+69 Did you had the opportunity to ask
+questions?
+Yes/No Yes / No 0
+70 Are you expecting improved water
+access after Borehole
+Rehabilitation?
+Yes/No Yes / No 0
+71 Any concerns any suggestions do
+you have from the project?
+Text - 0
+72 Did we have women participation in
+meeting?
+Yes/No Yes / No 0
+73 Do you Support the Borehole
+Rehabilitation project?
+Yes/No Yes / No 0
+11.9.4 Things to Remember
+• LSC records are directly linked with the borehole lifecycle.
+• Consultation records should remain accessible for future rehabilitation review.
+• Dynamic forms should allow future survey modifications without app changes.
+• Offline support is mandatory for remote meeting locations.
+• Activity logs and timestamps should remain available for audit and operational
+tracking.
+
+-- 51 of 121 --
+
+Page 52 of 121
+11.10 Monitoring Survey Module
+The Monitoring Survey Module is used by NGO Team Members to record post-
+rehabilitation observations, community impact, borehole functionality status, and
+operational improvements after rehabilitation activities are completed. This module is
+opened from the Borehole Detail Screen and is generally performed after the Borehole
+Rehabilitation stage.
+The module helps measure rehabilitation effectiveness, water access improvement, health
+impact, fuel usage changes, and overall community benefit associated with the
+rehabilitated borehole.
+11.10.1 Module Overview Screen
+The Module Overview Screen displays all monitoring-related sections and their completion
+progress for the selected borehole.
+Sections displayed:
+• Basic Information
+• Borehole Status & Functionality
+• Water Access Improvement
+• Fuel Use & Cost Impact
+• Health & Social Impact
+Features:
+• Section-wise progress tracking
+• Draft/Submitted indicators
+• Resume/Edit section option
+• Completion visibility
+11.10.2 Basic Information Section
+This section captures the primary monitoring survey details related to the rehabilitated
+borehole. The exact fields and validations will remain dynamically configurable from the
+Admin Panel.
+Input Fields:
+Sr. No Question Type Options Score
+1 Borehole ID Dropdown Auto-fetched 1
+2 Date of Survey Date - 1
+3 Name of Surveyor Text - 0
+4 Date of Borehole Rehabilitation Date - 1
+
+-- 52 of 121 --
+
+Page 53 of 121
+5 Name of Community
+Representative
+Text - 1
+6 Contact Number Numeric - 0
+7 Gender Single Choice Male / Female 0
+8 Address Text Landmark,
+Village,
+Province,
+Country
+1
+11.10.3 Borehole Status & Functionality Section
+This section records the current operational condition and performance of the
+rehabilitated borehole. Scoring and options will be managed dynamically from the
+Admin Panel.
+Input Fields:
+Sr. No Question Type Options Score
+9 Is the rehabilitated borehole
+operational?
+Yes/No Yes / No 1/0
+10 Which parts were fixed during
+rehabilitation?
+Text Description 1
+11 Current source of drinking water Single
+Choice
+Borehole /
+Nearby River
+1/0
+12 Distance of borehole from
+household
+Numeric Km 0
+13 Water availability per day Single
+Choice
+<4 hrs / 4–6 hrs /
+6–8 hrs / >8 hrs
+0/1/2/3
+14 Time taken to fetch water daily Numeric Minutes/day >10 – 3
+>15-2
+>20 - 1
+15 Quantity of water fetched daily Numeric Litres/day >10 – 1
+>15 – 2
+> 20 –3
+> 30 -4
+
+-- 53 of 121 --
+
+Page 54 of 121
+11.10.4 Water Access Improvement Section
+This section captures improvements in community water accessibility and usage after
+rehabilitation.
+Input Fields:
+Sr. No Question Type Options Score
+16 Water available per
+person per day
+Single
+Choice
+<5 L / 5–10 L / 10–20 L /
+>20 L
+1/2/3/4
+17 Frequency of fetching
+water
+Single
+Choice
+Daily / Alternate days
+/ Twice a week /
+Weekly
+4/3/2/1
+18 Consistent access to
+borehole
+Yes/No Yes / No 1/0
+11.10.5 Fuel Use & Cost Impact Section
+This section records the impact of borehole rehabilitation on household fuel
+consumption, water collection costs, and related operational expenses.
+Input Fields:
+Sr. No Question Type Options Score
+19 Reduction in fuel expenses Yes/No Yes / No 1/0
+20 Is cookstove still used to boil
+water?
+Yes/No Yes / No 0/1
+21 Previous fuel used for boiling Single
+Choice
+Firewood /
+Charcoal / Other
+2/1/0
+22 Has dependency on traditional
+fuel reduced?
+Yes/No Yes / No 1/0
+11.10.6 Health & Social Impact Section
+This section captures post-rehabilitation health, hygiene, and social improvements
+experienced by the community.
+Input Fields:
+
+-- 54 of 121 --
+
+Page 55 of 121
+Sr. No Question Type Options Score
+25 Improvement in health after
+using borehole
+Yes/No Yes / No 1/0
+26 Any training received on
+borehole use/maintenance
+Yes/No Yes / No 1/0
+27 Frequency of borehole
+maintenance
+Single choice Every 3 months /
+Every 6 months /
+Annually
+0/1/2
+28 Upload rehabilitated borehole
+image
+Image Upload With users
+(drinking/pumping)
+1
+11.10.7 Things to Remember
+• Monitoring surveys are linked directly with the rehabilitated borehole lifecycle.
+• The module should support long-term impact evaluation and reporting.
+• Dynamic forms should support future operational changes without app updates.
+• Offline-first functionality is mandatory for field operations.
+• Monitoring data should remain available for reporting, analytics, and donor
+documentation.
+11.11 Grievance Redressal Module
+The Grievance Redressal Module is used by NGO Team Members to record, track, and
+manage complaints, issues, or operational concerns related to a borehole after survey or
+rehabilitation activities are completed. This module is opened from the Borehole Detail
+Screen and can be used whenever a new issue is identified in the field.
+The module helps maintain structured records of community complaints, borehole-
+related issues, operational failures, maintenance concerns, and follow-up observations for
+future action and reporting purposes.
+11.11.1 Module Overview Screen
+The Module Overview Screen displays all grievance records associated with the selected
+borehole.
+Features:
+• Grievance listing
+• Grievance status visibility
+• Draft/Submitted indicators
+• Add New Grievance button
+• Search/filter support
+
+-- 55 of 121 --
+
+Page 56 of 121
+Possible statuses:
+• Draft
+• Submitted
+• Under Review
+• Closed
+• Reopened
+11.11.2 Create Grievance Form
+This section is used to record a new grievance or operational issue related to the
+borehole.
+Input fields:
+Sr.
+No
+Section Question Type Options / Input Mandatory
+1 Borehole
+Details
+Village / Area Dropdown List + Others Yes
+2 Borehole
+Details
+Borehole ID /
+Serial
+Number
+Dropdown Preloaded list Yes
+3 Borehole
+Details
+GPS Location Auto-
+capture
+- Auto
+4 Issue Type What is the
+issue?
+Multi-
+select
+Not working / Low water/
+Water quality/Access
+problem/Health & safety/
+Social/Other _____
+Yes
+5 Issue
+Details
+Describe the
+problem
+Text Short description Yes
+6 Issue
+Details
+Since when is
+the issue?
+Dropdown Today / Few days / Long
+time
+Yes
+7 Issue
+Details
+Upload photo
+(if any)
+Image
+upload
+Image No
+8 Expected
+Action
+What do you
+expect?
+Dropdown Repair / Inspection /
+Improve access / Other
+____
+Yes
+
+-- 56 of 121 --
+
+Page 57 of 121
+9 User
+Details
+Name Text - Yes
+10 User
+Details
+Phone
+Number
+Number - Yes
+11 Declaration I confirm the
+information
+is correct
+Checkbox Yes Yes
+12 Declaration Signature Digital - Yes
+11.11.3 Grievance Detail View
+This screen displays the complete details of a submitted grievance linked with the
+selected borehole.
+Details displayed may include:
+• Complaint information
+• Submission date
+• Submitted by
+• Attached media/documents
+• Status history
+• Activity logs
+Actions:
+• View attachments
+• Edit grievance (if permitted)
+• Reopen grievance
+• Update status
+Features
+• Timeline/activity visibility
+• Media preview support
+• Status tracking
+• Offline data access
+Validations & Business Rules
+• Only authorized users should edit grievances.
+• Status changes should be recorded in activity timeline.
+• Reopened grievances should maintain historical records.
+11.11.4 Section-wise Submission & Workflow
+The Grievance Redressal Module will support progressive grievance management and
+updates.
+
+-- 57 of 121 --
+
+Page 58 of 121
+Features:
+• Save Draft and Submit actions
+• Edit/update submitted grievances
+• Reopen grievance support
+• Offline synchronization support
+• Automatic activity logging
+Workflow Status:
+• Draft
+• Submitted
+• Under Review
+• Closed
+• Reopened
+The workflow visibility and permissions will remain manageable from the Admin Panel.
+11.11.5 Things to Remember
+• Grievances are directly linked with the associated borehole lifecycle.
+• The module should remain lightweight and easy to use during field visits.
+• Dynamic forms should support future grievance structure changes without app
+updates.
+• Offline-first operation is mandatory for remote operational areas.
+• Grievance history and status tracking should remain available for reporting and
+operational audits.
+11.12 Notifications Screen
+The Notifications Screen is opened when the user taps the notification icon from the
+Dashboard/Home Screen. This screen displays all system-generated alerts, operational
+updates, assignment notifications, survey reminders, approval updates, and
+synchronization-related activities associated with the logged-in user.
+The screen helps users stay updated with borehole activities, assigned tasks, module
+progress, approval actions, and offline synchronization status.
+11.12.1 Notification Listing Section
+This section displays all received notifications in chronological order.
+Each notification card may display:
+• Notification title
+• Short description/message
+• Related borehole ID
+• Module reference
+
+-- 58 of 121 --
+
+Page 59 of 121
+• Timestamp
+• Read/Unread status
+Possible notification types:
+• New borehole assigned
+• Module assigned/reassigned
+• Submission approved/rejected
+• Survey reopened
+• Draft pending sync
+• Offline sync completed
+• Grievance updates
+• Rehabilitation completed
+• Monitoring pending reminder
+11.12.2 User Actions / Flow
+Users can:
+• Open notification details
+• Redirect to related borehole/module
+• Mark notification as read
+• Clear notifications (if permitted)
+• Refresh notification list
+Click behavior:
+• Borehole-related notifications open Borehole Detail Screen
+• Module notifications open the related module/form
+• Approval notifications open related records/details
+11.12.3 Notification Behavior
+The system may send:
+• Push notifications
+• In-app notifications
+• Email notifications (where applicable)
+Features:
+• Real-time notification updates
+• Read/unread indicators
+• Automatic timestamp recording
+• Notification sync after offline restoration
+11.12.4 Validations & Business Rules
+• Users should receive notifications only for assigned boreholes/modules.
+• Notifications should follow role-based permissions.
+• Unread notification count should update dynamically.
+• Notifications should remain accessible offline after synchronization.
+
+-- 59 of 121 --
+
+Page 60 of 121
+• Old notifications may be archived based on system configuration.
+11.12.5 Things to Remember
+• Notifications should remain lightweight and easy to understand.
+• Important operational alerts should be clearly highlighted.
+• Navigation from notifications to operational screens should be seamless.
+• Push notifications should support low-network environments.
+• Notification history should support operational tracking and accountability.
+11.13 GIS / Map View Screen
+The GIS / Map View Screen is opened from the Dashboard, Borehole Listing Screen, or
+Borehole Detail Screen when the user selects the Map View option. This screen provides a
+simple geographical view of borehole locations using the GPS coordinates captured
+during surveys and field operations.
+The primary purpose of this screen is to help users identify borehole locations on the map
+and quickly navigate to the related borehole details.
+11.13.1 Map Overview Section
+This section displays boreholes on the map using location pins.
+Each map marker may display:
+• Borehole ID
+• Basic borehole status
+• Village/Region name
+Features:
+• Zoom in/out
+• Current location visibility
+• Open Borehole Details
+• Refresh map data
+11.13.2 Borehole Marker Information
+When the user taps on a borehole marker, a small information popup/card will appear.
+Displayed details:
+• Borehole ID
+• Village/Region
+• Current status
+Actions:
+• View Borehole Details
+11.13.3 Search Section
+Users can search boreholes directly from the map using:
+• Borehole ID
+
+-- 60 of 121 --
+
+Page 61 of 121
+• Village name
+Search results will highlight the selected borehole location on the map.
+11.13.4 GPS & Location Features
+The system will use GPS coordinates captured during borehole surveys for map plotting.
+Features:
+• Current user location (optional)
+• Borehole location visibility
+• Basic map navigation support
+Business Rules:
+• GPS permission is required for location-based functionality.
+• Borehole coordinates should be captured accurately during field operations.
+11.13.5 Validations & Business Rules
+• Users should only view boreholes assigned to their NGO/team access.
+• Map data should update after synchronization.
+• Duplicate borehole validation should remain applicable during borehole creation.
+• Offline map functionality is not included in current scope.
+11.13.6 Things to Remember
+• The map screen is intended for simple borehole location visibility only.
+• Advanced GIS analytics, heatmaps, route optimization, and geofencing are not
+included in the current scope.
+• The UI should remain lightweight and simple for field usage.
+• Borehole map navigation should remain directly connected with Borehole Detail
+Screen access.
+11.14 Profile & Settings Screen
+The Profile & Settings Screen is opened when t
