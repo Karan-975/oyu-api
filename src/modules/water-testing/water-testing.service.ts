@@ -78,9 +78,20 @@ export class WaterTestingService {
   async create(data: any, userId: string) {
     const id = uuidv4();
     await execute(
-      `INSERT INTO water_testing_records (id, borehole_id, submitted_by, status, submission_date)
-       VALUES (?, ?, ?, 'submitted', NOW())`,
-      [id, data.borehole_id, userId]
+      `INSERT INTO water_testing_records
+       (id, borehole_id, submitted_by, test_type, test_date, sample_collection_date,
+        sample_code, sample_description, water_appearance, testing_remarks,
+        borehole_water_image_url, nearby_source_image_url, supporting_attachment_url,
+        status, submission_date)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'submitted', NOW())`,
+      [
+        id, data.borehole_id, userId, data.test_type || 'post_rehabilitation',
+        data.test_date || null, data.sample_collection_date || null,
+        data.sample_code || null, data.sample_description || null,
+        data.water_appearance || null, data.testing_remarks || null,
+        data.borehole_water_image_url || data.vial_photo_url || null,
+        data.nearby_source_image_url || null, data.supporting_attachment_url || null,
+      ]
     );
     const record = await this.getById(id);
     const submitter = await queryOne<any>(`SELECT created_by FROM users WHERE id = ?`, [userId]);

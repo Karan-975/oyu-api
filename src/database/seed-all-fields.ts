@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 interface SeedField {
   key: string;
   label: string;
-  type: 'text' | 'number' | 'email' | 'phone' | 'textarea' | 'dropdown' | 'radio' | 'checkbox' | 'date' | 'gps' | 'image_upload' | 'signature';
+  type: 'text' | 'number' | 'email' | 'phone' | 'textarea' | 'dropdown' | 'radio' | 'checkbox' | 'date' | 'gps' | 'file_upload' | 'image_upload' | 'signature';
   required?: boolean;
   scoring?: boolean;
   options?: { label: string; value: string; score?: number }[];
@@ -968,6 +968,173 @@ const monitoringSections: SeedSection[] = [
   }
 ];
 
+const yesNoOptions = [
+  { label: 'Yes', value: 'yes' },
+  { label: 'No', value: 'no' },
+];
+
+const grievanceSections: SeedSection[] = [
+  {
+    title: 'Borehole Details',
+    fields: [
+      { key: 'village_area', label: 'Village / Area', type: 'text', required: true },
+      { key: 'borehole_reference', label: 'Borehole ID / Serial Number', type: 'text', required: true },
+      { key: 'gps_location', label: 'GPS Location', type: 'gps', required: true },
+    ],
+  },
+  {
+    title: 'Issue Details',
+    fields: [
+      { key: 'category', label: 'What is the issue?', type: 'checkbox', required: true, options: [
+        { label: 'Not working', value: 'not_working' }, { label: 'Low water', value: 'low_water' },
+        { label: 'Water quality', value: 'water_quality' }, { label: 'Access problem', value: 'access_problem' },
+        { label: 'Health & safety', value: 'health_safety' }, { label: 'Social', value: 'social' },
+        { label: 'Other', value: 'other' },
+      ] },
+      { key: 'description', label: 'Describe the problem', type: 'textarea', required: true },
+      { key: 'issue_since', label: 'Since when is the issue?', type: 'dropdown', required: true, options: [
+        { label: 'Today', value: 'today' }, { label: 'Few days', value: 'few_days' },
+        { label: 'Long time', value: 'long_time' },
+      ] },
+      { key: 'issue_photo', label: 'Upload photo (if any)', type: 'image_upload' },
+      { key: 'expected_action', label: 'What do you expect?', type: 'dropdown', required: true, options: [
+        { label: 'Repair', value: 'repair' }, { label: 'Inspection', value: 'inspection' },
+        { label: 'Improve access', value: 'improve_access' }, { label: 'Other', value: 'other' },
+      ] },
+    ],
+  },
+  {
+    title: 'Reporter & Declaration',
+    fields: [
+      { key: 'reporter_name', label: 'Your Name', type: 'text', required: true },
+      { key: 'reporter_phone', label: 'Phone Number', type: 'phone', required: true },
+      { key: 'declaration', label: 'I confirm the information is correct', type: 'checkbox', required: true,
+        options: [{ label: 'I confirm', value: 'confirmed' }] },
+      { key: 'reporter_signature', label: 'Signature', type: 'signature', required: true },
+    ],
+  },
+];
+
+const rehabilitationSections: SeedSection[] = [
+  {
+    title: 'Borehole Details',
+    fields: [
+      { key: 'borehole_reference', label: 'Borehole ID', type: 'text', required: true },
+      { key: 'village_gps', label: 'Village & GPS Location', type: 'gps', required: true },
+      { key: 'start_date', label: 'Date of Rehabilitation', type: 'date', required: true },
+      { key: 'agency_name', label: 'Contractor / Agency Name', type: 'text', required: true },
+      { key: 'technician_name', label: 'Technician Name', type: 'text', required: true },
+      { key: 'technician_contact', label: 'Technician Contact Number', type: 'phone', required: true },
+    ],
+  },
+  {
+    title: 'Pre-Rehabilitation Assessment',
+    fields: [
+      { key: 'pre_rehab_status', label: 'Borehole status before rehabilitation', type: 'checkbox', required: true,
+        options: [{ label: 'Non-functional', value: 'non_functional', score: 2 },
+          { label: 'Partially Functional', value: 'partially_functional', score: 1 }] },
+      { key: 'non_functional_duration', label: 'Duration of non-functionality', type: 'dropdown', required: true,
+        options: [{ label: '<3 months', value: 'under_3_months', score: 0 },
+          { label: '3-6 months', value: '3_6_months', score: 1 },
+          { label: '6-12 months', value: '6_12_months', score: 2 },
+          { label: '>1 year', value: 'over_1_year', score: 3 }, { label: '>3 years', value: 'over_3_years', score: 4 }] },
+      { key: 'technical_faults', label: 'Technical faults identified', type: 'checkbox', required: true, options: [
+        { label: 'Pump damage', value: 'pump_damage' }, { label: 'Seals worn', value: 'seals_worn' },
+        { label: 'Pipes broken', value: 'pipes_broken' }, { label: 'Rods damaged', value: 'rods_damaged' },
+        { label: 'Pump head failure', value: 'pump_head_failure' }, { label: 'Apron damage', value: 'apron_damage' },
+        { label: 'Drainage issue', value: 'drainage_issue' }, { label: 'Other', value: 'other' },
+      ] },
+      { key: 'pre_flow_test', label: 'Pre-rehabilitation flow rate test conducted?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'pre_flow_rate', label: 'Flow rate before rehabilitation (litres/min)', type: 'number' },
+      { key: 'pre_flow_method', label: 'Method used for flow rate testing', type: 'dropdown', options: [
+        { label: 'Bucket method', value: 'bucket' }, { label: 'Flow meter', value: 'flow_meter' }, { label: 'Other', value: 'other' },
+      ] },
+      { key: 'pre_discharge_condition', label: 'Water discharge condition before rehabilitation', type: 'dropdown', required: true,
+        options: [{ label: 'No flow', value: 'no_flow' }, { label: 'Very low', value: 'very_low' }, { label: 'Moderate', value: 'moderate' }] },
+      { key: 'before_rehab_photos', label: 'Upload Before Rehabilitation Photos', type: 'image_upload', required: true },
+    ],
+  },
+  {
+    title: 'Rehabilitation Activities',
+    fields: [
+      { key: 'mechanical_parts', label: 'Mechanical parts repaired/replaced', type: 'checkbox', required: true, options: [
+        { label: 'Pump head', value: 'pump_head' }, { label: 'Cylinder', value: 'cylinder' },
+        { label: 'Piston', value: 'piston' }, { label: 'Seals', value: 'seals' }, { label: 'Pipes', value: 'pipes' },
+        { label: 'Rods', value: 'rods' }, { label: 'Bearings', value: 'bearings' },
+        { label: 'Handle', value: 'handle' }, { label: 'Other', value: 'other' },
+      ] },
+      { key: 'civil_works', label: 'Civil works completed', type: 'checkbox', options: [
+        { label: 'Apron repair', value: 'apron_repair' }, { label: 'Drainage', value: 'drainage' },
+        { label: 'Soak pit', value: 'soak_pit' }, { label: 'Platform sealing', value: 'platform_sealing' },
+      ] },
+      { key: 'new_components_installed', label: 'Any new components installed?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'new_components_details', label: 'If yes, specify', type: 'text' },
+      { key: 'work_duration', label: 'Duration of rehabilitation work (days/hours)', type: 'text', required: true },
+      { key: 'during_rehab_photos', label: 'Upload During Rehabilitation Photos', type: 'image_upload', required: true },
+    ],
+  },
+  {
+    title: 'Chlorine Dispenser Installation',
+    fields: [
+      { key: 'chlorine_installed', label: 'Is a chlorine dispenser installed on the Afridev pump?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'chlorine_functional', label: 'Is the chlorine dispenser functional at installation?', type: 'dropdown', required: true, options: [
+        { label: 'Fully Functional', value: 'fully_functional' }, { label: 'Partially Functional', value: 'partially_functional' },
+        { label: 'Not Functional', value: 'not_functional' },
+      ] },
+      { key: 'chlorine_loaded', label: 'Was chlorine loaded during installation?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'chlorine_purpose_explained', label: 'Has the community been informed about chlorination?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'chlorine_training', label: 'Were users trained on safe use of chlorinated water?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'chlorine_smell', label: 'Noticeable smell immediately after installation?', type: 'dropdown', required: true, options: [
+        { label: 'No Smell', value: 'no_smell' }, { label: 'Slight Chlorine Smell', value: 'slight' },
+        { label: 'Strong Chlorine Smell', value: 'strong' },
+      ] },
+    ],
+  },
+  {
+    title: 'Post-Rehabilitation Testing',
+    fields: [
+      { key: 'post_flow_test', label: 'Pumping/Flow rate test conducted after rehabilitation?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'post_flow_rate', label: 'Flow rate after rehabilitation (litres/min)', type: 'number', required: true },
+      { key: 'post_test_method', label: 'Method used for testing', type: 'dropdown', required: true, options: [
+        { label: 'Bucket', value: 'bucket' }, { label: 'Flow meter', value: 'flow_meter' }, { label: 'Other', value: 'other' },
+      ] },
+      { key: 'pumping_test_duration', label: 'Pumping test duration (minutes)', type: 'number', required: true },
+      { key: 'post_discharge_status', label: 'Water discharge status', type: 'dropdown', required: true, options: [
+        { label: 'Good', value: 'good' }, { label: 'Moderate', value: 'moderate' }, { label: 'Low', value: 'low' },
+      ] },
+      { key: 'post_repair_leakage', label: 'Any leakage after repair?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'post_functionality', label: 'Borehole functionality', type: 'dropdown', required: true, options: [
+        { label: 'Fully Functional', value: 'fully_functional' }, { label: 'Partially Functional', value: 'partially_functional' },
+      ] },
+      { key: 'pump_smooth', label: 'Pump operates smoothly without noise', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'after_rehab_photos', label: 'Upload After Rehabilitation Photos', type: 'image_upload', required: true },
+    ],
+  },
+  {
+    title: 'Community Handover & Training',
+    fields: [
+      { key: 'community_handover', label: 'Borehole handed over to community?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'community_representative', label: 'Name of community representative', type: 'text', required: true },
+      { key: 'training_provided', label: 'Training provided?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'training_types', label: 'Type of training', type: 'checkbox', options: [
+        { label: 'Operation', value: 'operation' }, { label: 'Maintenance', value: 'maintenance' }, { label: 'Hygiene', value: 'hygiene' },
+      ] },
+      { key: 'water_committee_exists', label: 'Water committee exists in the area?', type: 'dropdown', required: true, options: yesNoOptions },
+    ],
+  },
+  {
+    title: 'Documentation & Carbon Compliance',
+    fields: [
+      { key: 'end_date', label: 'Date of completion', type: 'date', required: true },
+      { key: 'contractor_signature', label: 'Rehabilitation User Signature', type: 'signature', required: true },
+      { key: 'community_signature', label: 'Community Representative Signature', type: 'signature', required: true },
+      { key: 'carbon_transfer_agreement', label: 'Upload Carbon Transfer Agreement', type: 'file_upload', required: true },
+      { key: 'gps_tagged_photos', label: 'GPS-tagged Before / During / After Photos', type: 'image_upload', required: true },
+      { key: 'additional_remarks', label: 'Any additional remarks', type: 'textarea' },
+    ],
+  },
+];
+
 async function seedSurvey(moduleId: string, sections: SeedSection[]) {
   for (let sIdx = 0; sIdx < sections.length; sIdx++) {
     const sec = sections[sIdx];
@@ -1005,21 +1172,40 @@ async function main() {
   try {
     console.log('Connected to DB.');
 
-    // Fetch form modules
+    const moduleDefinitions = [
+      ['Borehole Recce', 'borehole_recce', 'Initial borehole identification and condition survey', 'borehole_recce'],
+      ['Baseline Survey', 'baseline_survey', 'Household and community baseline survey', 'baseline_survey'],
+      ['LSC / Stakeholder Consultation', 'lsc_survey', 'Village stakeholder consultation', 'lsc_survey'],
+      ['Monitoring Survey', 'monitoring_survey', 'Post-rehabilitation monitoring survey', 'monitoring_survey'],
+      ['Grievance Report', 'grievance', 'Field grievance and issue reporting', 'grievance'],
+      ['Rehabilitation Report', 'rehabilitation', 'Borehole rehabilitation execution record', 'rehabilitation'],
+    ];
+    for (const [name, slug, description, moduleType] of moduleDefinitions) {
+      await execute(
+        `INSERT INTO form_modules (id, name, slug, description, module_type, is_active, is_multi_step)
+         VALUES (UUID(), ?, ?, ?, ?, 1, 1)
+         ON DUPLICATE KEY UPDATE name = VALUES(name), description = VALUES(description),
+           module_type = VALUES(module_type), is_active = 1, is_multi_step = 1`,
+        [name, slug, description, moduleType]
+      );
+    }
+
     const modules = await query<any>('SELECT id, slug FROM form_modules');
     const recceModule = modules.find(m => m.slug === 'borehole_recce');
     const baselineModule = modules.find(m => m.slug === 'baseline_survey');
     const lscModule = modules.find(m => m.slug === 'lsc_survey');
     const monitoringModule = modules.find(m => m.slug === 'monitoring_survey');
+    const grievanceModule = modules.find(m => m.slug === 'grievance');
+    const rehabilitationModule = modules.find(m => m.slug === 'rehabilitation');
 
-    if (!recceModule || !baselineModule || !lscModule || !monitoringModule) {
-      console.error('Form modules not found! Run npm run db:seed first.');
+    if (!recceModule || !baselineModule || !lscModule || !monitoringModule || !grievanceModule || !rehabilitationModule) {
+      console.error('Unable to create all required form modules.');
       process.exit(1);
     }
 
     // Clear old form configuration
     console.log('Clearing old sections, fields and options for core modules...');
-    const moduleIds = [recceModule.id, baselineModule.id, lscModule.id, monitoringModule.id];
+    const moduleIds = [recceModule.id, baselineModule.id, lscModule.id, monitoringModule.id, grievanceModule.id, rehabilitationModule.id];
     const sections = await query<any>('SELECT id FROM form_sections WHERE module_id IN (?)', [moduleIds]);
     const sectionIds = sections.map(s => s.id);
     
@@ -1047,6 +1233,12 @@ async function main() {
 
     console.log('Seeding Monitoring Survey fields...');
     await seedSurvey(monitoringModule.id, monitoringSections);
+
+    console.log('Seeding Grievance fields...');
+    await seedSurvey(grievanceModule.id, grievanceSections);
+
+    console.log('Seeding Rehabilitation fields...');
+    await seedSurvey(rehabilitationModule.id, rehabilitationSections);
 
     console.log('Seeding Complete!');
     process.exit(0);
