@@ -1,11 +1,13 @@
-import crypto from 'crypto';
+﻿import crypto from 'crypto';
+import fs from 'fs/promises';
+import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { config } from './config';
 
 export interface UploadResult {
   key: string;
   url: string;
-  provider: 'cloudinary';
+  provider: 'cloudinary' | 'local';
   size: number;
   mimeType: string;
   originalName: string;
@@ -24,6 +26,10 @@ function ensureCloudinaryConfig() {
   if (!config.cloudinary.cloudName || !config.cloudinary.apiKey || !config.cloudinary.apiSecret) {
     throw new Error('Cloudinary is not configured. Set CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, and CLOUDINARY_API_SECRET.');
   }
+}
+
+function hasCloudinaryConfig() {
+  return Boolean(config.cloudinary.cloudName && config.cloudinary.apiKey && config.cloudinary.apiSecret);
 }
 
 function buildSignature(params: Record<string, string>, apiSecret: string) {
@@ -46,6 +52,52 @@ function normalizeFolder(folder: string) {
     .replace(/[^a-zA-Z0-9/_-]+/g, '-')
     .replace(/\/+/g, '/')
     .replace(/^\/|\/$/g, '') || 'general';
+}
+
+function getLocalFileExtension(originalName: string, mimeType: string) {
+  const existingExt = path.extname(originalName).trim();
+  if (existingExt) return existingExt.toLowerCase();
+
+  const mimeMap: Record<string, string> = {
+    'image/jpeg': '.jpg',
+    'image/png': '.png',
+    'image/webp': '.webp',
+    'image/gif': '.gif',
+    'application/pdf': '.pdf',
+  };
+
+  return mimeMap[mimeType] ?? '';
+}
+
+async function uploadLocally(
+  buffer: Buffer,
+  originalName: string,
+  mimeType: string,
+  folder: string
+): Promise<UploadResult> {
+  const safeFolder = normalizeFolder(folder || config.cloudinary.uploadFolder);
+  const relativeFolder = safeFolder.split('/').filter(Boolean);
+  const fileId = uuidv4();
+  const extension = getLocalFileExtension(originalName, mimeType);
+  const fileName = `${fileId}${extension}`;
+  const uploadRoot = path.resolve(process.cwd(), 'uploads');
+  const targetDir = path.join(uploadRoot, ...relativeFolder);
+  const targetPath = path.join(targetDir, fileName);
+
+  await fs.mkdir(targetDir, { recursive: true });
+  await fs.writeFile(targetPath, buffer);
+
+  const publicPath = ['uploads', ...relativeFolder, fileName].join('/');
+  const url = `http://localhost:${config.app.port}/${publicPath}`;
+
+  return {
+    key: `local:${safeFolder}/${fileName}`,
+    url,
+    provider: 'local',
+    size: buffer.length,
+    mimeType,
+    originalName,
+  };
 }
 
 function parseStorageKey(storageKey: string) {
@@ -83,6 +135,10 @@ export async function uploadToCloudinary(
   mimeType: string,
   folder: string = 'uploads'
 ): Promise<UploadResult> {
+  if (!hasCloudinaryConfig()) {
+    return uploadLocally(buffer, originalName, mimeType, folder || config.cloudinary.uploadFolder);
+  }
+
   ensureCloudinaryConfig();
 
   const safeFolder = normalizeFolder(folder || config.cloudinary.uploadFolder);
@@ -122,6 +178,13 @@ export async function uploadToCloudinary(
 }
 
 export async function deleteFromCloudinary(storageKey: string): Promise<void> {
+  if (storageKey.startsWith('local:')) {
+    const relativePath = storageKey.slice('local:'.length);
+    const fullPath = path.resolve(process.cwd(), 'uploads', relativePath);
+    await fs.unlink(fullPath).catch(() => {});
+    return;
+  }
+
   ensureCloudinaryConfig();
 
   const { resourceType, publicId } = parseStorageKey(storageKey);

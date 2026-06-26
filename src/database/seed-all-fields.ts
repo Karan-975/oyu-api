@@ -49,14 +49,35 @@ const recceSections: SeedSection[] = [
       },
       {
         key: 'is_manual_handpump',
-        label: 'Is Manual Handpump?',
+        label: 'Is the Borehole a Manual Handpump?',
         type: 'dropdown',
         required: true,
         options: [
           { label: 'Yes', value: 'Yes' },
           { label: 'No', value: 'No' }
         ]
-      }
+      },
+      {
+        key: 'pump_type',
+        label: 'Pump type',
+        type: 'dropdown',
+        options: [
+          { label: 'T7 Mono', value: 'T7 Mono' },
+          { label: 'Afridev', value: 'Afridev' }
+        ]
+      },
+      { key: 't7_q1', label: 'Physical Assessment - T7 Mono Handpump: Is the Mono T-7 pump head/drive head physically present and properly fixed on the borehole?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Damaged', value: 'Damaged', score: 0 }] },
+      { key: 't7_q2', label: 'When the handle is operated, does the pump mechanism move smoothly without getting jammed or stuck?', type: 'dropdown', options: [{ label: 'Smooth', value: 'Smooth', score: 0 }, { label: 'Hard', value: 'Hard', score: 0 }, { label: 'Jammed', value: 'Jammed', score: 0 }, { label: 'Loose', value: 'Loose', score: 0 }] },
+      { key: 't7_q3', label: 'Does water come out from the outlet after operating the pump for a reasonable time?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Low flow', value: 'Low flow', score: 0 }] },
+      { key: 't7_q4', label: 'Is there any abnormal sound, vibration, or grinding during operation, indicating possible internal mechanical wear?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 't7_q5', label: 'Is there any visible leakage from the pump head, outlet, joints, or rising main connection?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 't7_q6', label: 'Based on physical observation, does the pump appear repairable through part replacement/servicing, or does it require full replacement?', type: 'dropdown', options: [{ label: 'Minor repair', value: 'Minor repair', score: 0 }, { label: 'Major repair', value: 'Major repair', score: 0 }, { label: 'Full replacement', value: 'Full replacement', score: 0 }, { label: 'Further inspection required', value: 'Further inspection required', score: 0 }] },
+      { key: 'af_q1', label: 'Physical Assessment - Afridev Handpump: Is the Afridev pump handle, pump stand, spout, and head assembly physically present and properly fixed?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Damaged', value: 'Damaged', score: 0 }] },
+      { key: 'af_q2', label: 'Does the handle move freely up and down, or is it loose, too tight, or jammed?', type: 'dropdown', options: [{ label: 'Free movement', value: 'Free movement', score: 0 }, { label: 'Loose', value: 'Loose', score: 0 }, { label: 'Tight', value: 'Tight', score: 0 }, { label: 'Jammed', value: 'Jammed', score: 0 }] },
+      { key: 'af_q3', label: 'When the handle is operated, does water discharge from the spout?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Low flow', value: 'Low flow', score: 0 }] },
+      { key: 'af_q4', label: 'Does the pump require excessive strokes before water comes, indicating possible cylinder, valve, seal, or rod issue?', type: 'dropdown', options: [{ label: 'Normal strokes', value: 'Normal strokes', score: 0 }, { label: 'Excessive strokes', value: 'Excessive strokes', score: 0 }, { label: 'No water', value: 'No water', score: 0 }] },
+      { key: 'af_q5', label: 'Is there any visible leakage around the pump head, spout, platform, or rising main area?', type: 'dropdown', options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'af_q6', label: 'Based on handle movement and water flow, does the issue appear repairable through replacement of rods, seals, valves, cylinder parts, or does the full pump need replacement?', type: 'dropdown', options: [{ label: 'Minor repair', value: 'Minor repair', score: 0 }, { label: 'Major repair', value: 'Major repair', score: 0 }, { label: 'Full replacement', value: 'Full replacement', score: 0 }, { label: 'Further inspection required', value: 'Further inspection required', score: 0 }] }
     ]
   },
   {
@@ -104,26 +125,26 @@ const recceSections: SeedSection[] = [
     fields: [
       {
         key: 'drinking_water_source',
-        label: 'Is this borehole the main drinking water source in the area?',
+        label: 'Is Borehole main drinking water source?',
         type: 'dropdown',
         required: true,
         options: [
-          { label: 'Yes', value: 'Yes' },
-          { label: 'No', value: 'No' }
+          { label: 'Yes', value: 'Yes', score: 2 },
+          { label: 'No', value: 'No', score: 0 }
         ]
       },
       {
         key: 'households_served',
-        label: 'Number of households served',
+        label: 'Households served from the Borehole',
         type: 'dropdown',
         required: true,
         options: [
-          { label: '<50', value: '<50' },
-          { label: '50–100', value: '50–100' },
-          { label: '100–150', value: '100–150' },
-          { label: '150–200', value: '150–200' },
-          { label: '200–500', value: '200–500' },
-          { label: '>500', value: '>500' }
+          { label: '<50', value: '<50', score: 0 },
+          { label: '50-100', value: '50-100', score: 1 },
+          { label: '100-150', value: '100-150', score: 2 },
+          { label: '150-200', value: '150-200', score: 3 },
+          { label: '200-500', value: '200-500', score: 4 },
+          { label: '>500', value: '>500', score: 5 }
         ]
       },
       {
@@ -131,21 +152,25 @@ const recceSections: SeedSection[] = [
         label: 'Nearby alternative water sources',
         type: 'checkbox',
         options: [
-          { label: 'River / Stream', value: 'River / Stream' },
-          { label: 'Canal', value: 'Canal' },
-          { label: 'Pond / Lake', value: 'Pond / Lake' },
-          { label: 'Open Well', value: 'Open Well' },
-          { label: 'Hand-dug Well', value: 'Hand-dug Well' },
-          { label: 'Spring', value: 'Spring' },
-          { label: 'Reservoir', value: 'Reservoir' },
-          { label: 'Rainwater / Tanker', value: 'Rainwater / Tanker' },
-          { label: 'Piped Water / Community Point', value: 'Piped Water / Community Point' },
-          { label: 'Other', value: 'Other' }
+          { label: 'River', value: 'River', score: 3 },
+          { label: 'Stream', value: 'Stream', score: 2 },
+          { label: 'Canal', value: 'Canal', score: 3 },
+          { label: 'Pond', value: 'Pond', score: 2 },
+          { label: 'Lake', value: 'Lake', score: 3 },
+          { label: 'Open Well', value: 'Open Well', score: 2 },
+          { label: 'Hand-dug Well', value: 'Hand-dug Well', score: 3 },
+          { label: 'Spring', value: 'Spring', score: 2 },
+          { label: 'Reservoir', value: 'Reservoir', score: 2 },
+          { label: 'Rainwater', value: 'Rainwater', score: 0 },
+          { label: 'Tanker', value: 'Tanker', score: 0 },
+          { label: 'Community Point', value: 'Community Point', score: 0 },
+          { label: 'Piped Water', value: 'Piped Water', score: 1 },
+          { label: 'Other', value: 'Other', score: 0 }
         ]
       },
       {
         key: 'water_clear',
-        label: 'Is the water clear (no visible particles)?',
+        label: 'Is water from Borehole clear (no visible particles)?',
         type: 'dropdown',
         required: true,
         options: [
@@ -155,7 +180,7 @@ const recceSections: SeedSection[] = [
       },
       {
         key: 'water_color',
-        label: 'Is there any yellow, brown, green, or cloudy color?',
+        label: 'Is there any yellow, brown, green, or cloudy colour in the water?',
         type: 'dropdown',
         required: true,
         options: [
@@ -165,7 +190,7 @@ const recceSections: SeedSection[] = [
       },
       {
         key: 'water_smell_taste',
-        label: 'Any smell or unusual taste from water?',
+        label: 'Any smell or unusual taste from Borehole Water?',
         type: 'dropdown',
         required: true,
         options: [
@@ -175,7 +200,7 @@ const recceSections: SeedSection[] = [
       },
       {
         key: 'visible_particles',
-        label: 'Are there visible particles, mud, or sand in the water?',
+        label: 'Are there visible particles, mud, sand, or floating materials in the water?',
         type: 'dropdown',
         required: true,
         options: [
@@ -195,7 +220,7 @@ const recceSections: SeedSection[] = [
       },
       {
         key: 'known_quality_issues',
-        label: 'Any known Water quality issues (fluoride, salinity, etc.)?',
+        label: 'Any known Water quality issues in Borehole Water (fluoride, salinity etc.)',
         type: 'dropdown',
         required: true,
         options: [
@@ -204,7 +229,7 @@ const recceSections: SeedSection[] = [
           { label: 'Unknown', value: 'Unknown' }
         ]
       },
-      { key: 'known_quality_issues_details', label: 'If yes, please specify details', type: 'text' },
+      { key: 'known_quality_issues_details', label: 'Please specify (e.g. fluoride, salinity, hardness...)', type: 'text' },
       {
         key: 'contamination_risk',
         label: 'Is there any risk of contamination nearby (toilets, drainage)?',
@@ -221,8 +246,8 @@ const recceSections: SeedSection[] = [
         type: 'dropdown',
         required: true,
         options: [
-          { label: 'Yes', value: 'Yes' },
-          { label: 'No', value: 'No' }
+          { label: 'Yes', value: 'Yes', score: 2 },
+          { label: 'No', value: 'No', score: 1 }
         ]
       }
     ]
@@ -844,42 +869,23 @@ const monitoringSections: SeedSection[] = [
   },
   {
     title: 'Water Access Improvement',
-    description: 'Post-rehab water consumption patterns',
+    description: 'Post-rehab water consumption patterns and Chlorine Dispenser Survey',
     fields: [
-      {
-        key: 'water_per_person_daily',
-        label: 'Water available per person per day',
-        type: 'dropdown',
-        required: true,
-        options: [
-          { label: '<5 L', value: '<5 L' },
-          { label: '5–10 L', value: '5–10 L' },
-          { label: '10–20 L', value: '10–20 L' },
-          { label: ' >20 L', value: ' >20 L' }
-        ]
-      },
-      {
-        key: 'fetching_frequency_mon',
-        label: 'Frequency of fetching water',
-        type: 'dropdown',
-        required: true,
-        options: [
-          { label: 'Daily', value: 'Daily' },
-          { label: 'Alternate days', value: 'Alternate days' },
-          { label: 'Twice a week', value: 'Twice a week' },
-          { label: 'Weekly', value: 'Weekly' }
-        ]
-      },
-      {
-        key: 'consistent_access',
-        label: 'Consistent access to borehole?',
-        type: 'dropdown',
-        required: true,
-        options: [
-          { label: 'Yes', value: 'Yes' },
-          { label: 'No', value: 'No' }
-        ]
-      }
+      { key: 'water_per_person_daily', label: 'Water available per person per day', type: 'dropdown', required: true, options: [{ label: '<5 L', value: '<5 L' }, { label: '5-10 L', value: '5-10 L' }, { label: '10-20 L', value: '10-20 L' }, { label: '>20 L', value: '>20 L' }] },
+      { key: 'fetching_frequency_mon', label: 'Frequency of fetching water', type: 'dropdown', required: true, options: [{ label: 'Daily', value: 'Daily' }, { label: 'Alternate days', value: 'Alternate days' }, { label: 'Twice a week', value: 'Twice a week' }, { label: 'Weekly', value: 'Weekly' }] },
+      { key: 'consistent_access', label: 'Consistent access to borehole?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'mon_cdi_present', label: 'Chlorine Dispenser Survey - Is the chlorine dispenser present on the pump?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'mon_cdi_working', label: 'Is the chlorine dispenser working properly?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Needs Repair', value: 'Needs Repair', score: 0 }] },
+      { key: 'mon_cdi_chlorine_available', label: 'Is chlorine available in the dispenser?', type: 'checkbox', required: true, options: [{ label: 'Full', value: 'Full', score: 0 }, { label: 'Partially Available', value: 'Partially Available', score: 0 }, { label: 'Empty', value: 'Empty', score: 0 }] },
+      { key: 'mon_cdi_refilled', label: 'Has chlorine been refilled since the last visit?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Don\'t Know', value: 'Don\'t Know', score: 0 }] },
+      { key: 'mon_cdi_photo_taken', label: 'Photo of Chlorine Dispenser Taken?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'chlorine_dispenser_photo', label: 'Upload Chlorine Dispenser Photo', type: 'image_upload' },
+      { key: 'mon_cdi_taste_smell', label: 'Water Quality & User Feedback - Do users report a chlorine taste or smell in the water?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'mon_cdi_acceptability', label: 'Is the chlorine taste/smell acceptable to users?', type: 'checkbox', required: true, options: [{ label: 'Acceptable', value: 'Acceptable', score: 0 }, { label: 'Too Strong', value: 'Too Strong', score: 0 }, { label: 'Too Weak', value: 'Too Weak', score: 0 }, { label: 'No Opinion', value: 'No Opinion', score: 0 }] },
+      { key: 'mon_cdi_complaints', label: 'Have any users complained about water quality since the last visit?', type: 'checkbox', required: true, options: [{ label: 'No Complaints', value: 'No Complaints', score: 0 }, { label: 'Taste', value: 'Taste', score: 0 }, { label: 'Smell', value: 'Smell', score: 0 }, { label: 'Colour', value: 'Colour', score: 0 }, { label: 'Other', value: 'Other', score: 0 }] },
+      { key: 'mon_cdi_collection_pattern', label: 'Usage & Health Pattern - Do households continue to collect drinking water from this borehole?', type: 'checkbox', required: true, options: [{ label: 'Yes, Regularly', value: 'Yes, Regularly', score: 0 }, { label: 'Occasionally', value: 'Occasionally', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'mon_cdi_safer_water', label: 'Compared to before rehabilitation, do users believe the water is safer to drink?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }, { label: 'Don\'t Know', value: 'Don\'t Know', score: 0 }] },
+      { key: 'mon_cdi_operator_checked', label: 'Has the community water committee/operator checked the chlorine dispenser during the reporting period?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] }
     ]
   },
   {
@@ -958,12 +964,12 @@ const monitoringSections: SeedSection[] = [
         type: 'dropdown',
         required: true,
         options: [
-          { label: 'Every 3 months', value: 'Every 3 months' },
-          { label: 'Every 6 months', value: 'Every 6 months' },
-          { label: 'Annually', value: 'Annually' }
+          { label: 'Every 3 months', value: 'Every 3 months', score: 0 },
+          { label: 'Every 6 months', value: 'Every 6 months', score: 1 },
+          { label: 'Annually', value: 'Annually', score: 2 }
         ]
       },
-      { key: 'upload_monitoring_photo', label: 'Upload rehabilitated borehole image', type: 'image_upload' }
+      { key: 'upload_monitoring_photo', label: 'Upload Borehole Image - Photo with users drinking/pumping water', type: 'image_upload' }
     ]
   }
 ];
@@ -1076,18 +1082,12 @@ const rehabilitationSections: SeedSection[] = [
   {
     title: 'Chlorine Dispenser Installation',
     fields: [
-      { key: 'chlorine_installed', label: 'Is a chlorine dispenser installed on the Afridev pump?', type: 'dropdown', required: true, options: yesNoOptions },
-      { key: 'chlorine_functional', label: 'Is the chlorine dispenser functional at installation?', type: 'dropdown', required: true, options: [
-        { label: 'Fully Functional', value: 'fully_functional' }, { label: 'Partially Functional', value: 'partially_functional' },
-        { label: 'Not Functional', value: 'not_functional' },
-      ] },
-      { key: 'chlorine_loaded', label: 'Was chlorine loaded during installation?', type: 'dropdown', required: true, options: yesNoOptions },
-      { key: 'chlorine_purpose_explained', label: 'Has the community been informed about chlorination?', type: 'dropdown', required: true, options: yesNoOptions },
-      { key: 'chlorine_training', label: 'Were users trained on safe use of chlorinated water?', type: 'dropdown', required: true, options: yesNoOptions },
-      { key: 'chlorine_smell', label: 'Noticeable smell immediately after installation?', type: 'dropdown', required: true, options: [
-        { label: 'No Smell', value: 'no_smell' }, { label: 'Slight Chlorine Smell', value: 'slight' },
-        { label: 'Strong Chlorine Smell', value: 'strong' },
-      ] },
+      { key: 'cdi_installed', label: 'Is a chlorine dispenser installed on the Afridev pump?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'cdi_functional', label: 'Is the chlorine dispenser functional at the time of installation?', type: 'checkbox', required: true, options: [{ label: 'Fully Functional', value: 'Fully Functional', score: 0 }, { label: 'Partially Functional', value: 'Partially Functional', score: 0 }, { label: 'Not Functional', value: 'Not Functional', score: 0 }] },
+      { key: 'cdi_chlorine_loaded', label: 'Was chlorine loaded into the dispenser during installation?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'cdi_community_informed', label: 'Has the community been informed about the purpose of chlorination?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'cdi_users_trained', label: 'Were users trained on safe use of chlorinated water?', type: 'checkbox', required: true, options: [{ label: 'Yes', value: 'Yes', score: 0 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'cdi_smell_after_install', label: 'Does the water have any noticeable smell immediately after installation?', type: 'checkbox', required: true, options: [{ label: 'No Smell', value: 'No Smell', score: 0 }, { label: 'Slight Chlorine Smell', value: 'Slight Chlorine Smell', score: 0 }, { label: 'Strong Chlorine Smell', value: 'Strong Chlorine Smell', score: 0 }] },
     ],
   },
   {
@@ -1113,13 +1113,13 @@ const rehabilitationSections: SeedSection[] = [
   {
     title: 'Community Handover & Training',
     fields: [
-      { key: 'community_handover', label: 'Borehole handed over to community?', type: 'dropdown', required: true, options: yesNoOptions },
-      { key: 'community_representative', label: 'Name of community representative', type: 'text', required: true },
-      { key: 'training_provided', label: 'Training provided?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'community_handover', label: 'Borehole handed over to community?', type: 'dropdown', required: true, options: [{ label: 'Yes', value: 'Yes', score: 1 }, { label: 'No', value: 'No', score: 0 }] },
+      { key: 'community_representative', label: 'Name of community representative', type: 'text' },
+      { key: 'training_provided', label: 'Training provided', type: 'dropdown', required: true, options: yesNoOptions },
       { key: 'training_types', label: 'Type of training', type: 'checkbox', options: [
         { label: 'Operation', value: 'operation' }, { label: 'Maintenance', value: 'maintenance' }, { label: 'Hygiene', value: 'hygiene' },
       ] },
-      { key: 'water_committee_exists', label: 'Water committee exists in the area?', type: 'dropdown', required: true, options: yesNoOptions },
+      { key: 'water_committee_exists', label: 'Water committee exists in the area', type: 'dropdown', required: true, options: yesNoOptions },
     ],
   },
   {
